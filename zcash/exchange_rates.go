@@ -10,7 +10,7 @@ import (
 	"sync"
 	"time"
 
-	exchange "github.com/OpenBazaar/spvwallet/exchangerates"
+	exchange "github.com/phoreproject/spvwallet/exchangerates"
 	"golang.org/x/net/proxy"
 	"strings"
 )

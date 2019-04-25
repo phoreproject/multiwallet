@@ -16,7 +16,7 @@
 [[projects]]
   branch = "master"
   digest = "1:3861bd7ece0e78ea465eb4c2ee12391a2759755220c89729a7033b4af98b42e3"
-  name = "github.com/OpenBazaar/spvwallet"
+  name = "github.com/phoreproject/spvwallet"
   packages = [
     ".",
     "exchangerates",
@@ -27,7 +27,7 @@
 [[projects]]
   branch = "master"
   digest = "1:0efd5e1f5ad2283a539357586532519154e3b9894ad611a896069c8c46e86874"
-  name = "github.com/OpenBazaar/wallet-interface"
+  name = "github.com/phoreproject/wallet-interface"
   packages = ["."]
   pruneopts = "UT"
   revision = "90321224966c0c88e02e99f1f9d3cef18a77f399"
@@ -135,13 +135,13 @@
 [[projects]]
   branch = "master"
   digest = "1:f0b9d28f2379d36697c1356720e1134ee5040eb75d9f30cdb5ce0b39465fdf31"
-  name = "github.com/cpacia/BitcoinCash-Wallet"
+  name = "github.com/phoreproject/BitcoinCash-Wallet"
   packages = [
     ".",
     "exchangerates",
   ]
   pruneopts = "UT"
-  revision = "ba9295daa6d43b4cbd3f88e925379f0cf025b6b9"
+  revision = "120e3ce483c4704ddc527525f65b454796904b3f"
 
 [[projects]]
   branch = "master"
@@ -385,9 +385,9 @@
     "github.com/OpenBazaar/golang-socketio",
     "github.com/OpenBazaar/golang-socketio/protocol",
     "github.com/OpenBazaar/golang-socketio/transport",
-    "github.com/OpenBazaar/spvwallet",
-    "github.com/OpenBazaar/spvwallet/exchangerates",
-    "github.com/OpenBazaar/wallet-interface",
+    "github.com/phoreproject/spvwallet",
+    "github.com/phoreproject/spvwallet/exchangerates",
+    "github.com/phoreproject/wallet-interface",
     "github.com/btcsuite/btcd/blockchain",
     "github.com/btcsuite/btcd/btcec",
     "github.com/btcsuite/btcd/chaincfg",
@@ -403,8 +403,8 @@
     "github.com/btcsuite/btcwallet/wallet/txauthor",
     "github.com/btcsuite/btcwallet/wallet/txrules",
     "github.com/btcsuite/golangcrypto/ripemd160",
-    "github.com/cpacia/BitcoinCash-Wallet",
-    "github.com/cpacia/BitcoinCash-Wallet/exchangerates",
+    "github.com/phoreproject/BitcoinCash-Wallet",
+    "github.com/phoreproject/BitcoinCash-Wallet/exchangerates",
     "github.com/cpacia/bchutil",
     "github.com/golang/protobuf/proto",
     "github.com/golang/protobuf/ptypes/timestamp",

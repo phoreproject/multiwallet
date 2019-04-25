@@ -2,7 +2,7 @@ package util
 
 import (
 	"bytes"
-	wi "github.com/OpenBazaar/wallet-interface"
+	wi "github.com/phoreproject/wallet-interface"
 	"github.com/btcsuite/btcd/wire"
 )
 

@@ -1,7 +1,7 @@
 package util
 
 import (
-	"github.com/OpenBazaar/wallet-interface"
+	"github.com/phoreproject/wallet-interface"
 )
 
 type FeeProvider struct {

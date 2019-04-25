@@ -10,7 +10,7 @@ import (
 	"github.com/phoreproject/multiwallet/bitcoincash"
 	"github.com/phoreproject/multiwallet/litecoin"
 	"github.com/phoreproject/multiwallet/zcash"
-	"github.com/OpenBazaar/wallet-interface"
+	"github.com/phoreproject/wallet-interface"
 	"github.com/btcsuite/btcutil"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"

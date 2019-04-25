@@ -6,7 +6,7 @@ import (
 
 	"github.com/phoreproject/multiwallet/cache"
 	"github.com/phoreproject/multiwallet/datastore"
-	"github.com/OpenBazaar/wallet-interface"
+	"github.com/phoreproject/wallet-interface"
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/op/go-logging"
 	"golang.org/x/net/proxy"

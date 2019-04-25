@@ -35,11 +35,11 @@
 
 [[constraint]]
   branch = "master"
-  name = "github.com/OpenBazaar/spvwallet"
+  name = "github.com/phoreproject/spvwallet"
 
 [[constraint]]
   branch = "master"
-  name = "github.com/OpenBazaar/wallet-interface"
+  name = "github.com/phoreproject/wallet-interface"
 
 [[constraint]]
   branch = "master"
@@ -59,7 +59,7 @@
 
 [[constraint]]
   branch = "master"
-  name = "github.com/cpacia/BitcoinCash-Wallet"
+  name = "github.com/phoreproject/BitcoinCash-Wallet"
 
 [[constraint]]
   branch = "master"
