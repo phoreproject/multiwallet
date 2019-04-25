@@ -24,8 +24,8 @@ import (
 	"github.com/ltcsuite/ltcutil"
 	"github.com/ltcsuite/ltcwallet/wallet/txrules"
 
-	laddr "github.com/OpenBazaar/multiwallet/litecoin/address"
-	"github.com/OpenBazaar/multiwallet/util"
+	laddr "github.com/phoreproject/multiwallet/litecoin/address"
+	"github.com/phoreproject/multiwallet/util"
 )
 
 func (w *LitecoinWallet) buildTx(amount int64, addr btc.Address, feeLevel wi.FeeLevel, optionalOutput *wire.TxOut) (*wire.MsgTx, error) {

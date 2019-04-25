@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/OpenBazaar/multiwallet.svg?branch=master)](https://travis-ci.org/OpenBazaar/multiwallet)
 [![Coverage Status](https://coveralls.io/repos/github/OpenBazaar/multiwallet/badge.svg?branch=master)](https://coveralls.io/github/OpenBazaar/multiwallet?branch=master)
-[![Go Report Card](https://goreportcard.com/badge/github.com/OpenBazaar/multiwallet)](https://goreportcard.com/report/github.com/OpenBazaar/multiwallet)
+[![Go Report Card](https://goreportcard.com/badge/github.com/phoreproject/multiwallet)](https://goreportcard.com/report/github.com/phoreproject/multiwallet)
 
 # multiwallet
 Insight API based multi-cryptocurrency wallet
@@ -10,8 +10,8 @@ Insight API based multi-cryptocurrency wallet
 Once your go environment is configured (https://golang.org/doc/install), you should be able to run the multiwallet like this:
 
 ```
-go get -u github.com/OpenBazaar/multiwallet
-cd $GOPATH/src/github.com/OpenBazaar/multiwallet
+go get -u github.com/phoreproject/multiwallet
+cd $GOPATH/src/github.com/phoreproject/multiwallet
 
 go run cmd/multiwallet/main.go -h
 ```

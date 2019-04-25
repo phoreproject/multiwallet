@@ -4,8 +4,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/OpenBazaar/multiwallet/cache"
-	"github.com/OpenBazaar/multiwallet/datastore"
+	"github.com/phoreproject/multiwallet/cache"
+	"github.com/phoreproject/multiwallet/datastore"
 	"github.com/OpenBazaar/wallet-interface"
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/op/go-logging"

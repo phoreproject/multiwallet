@@ -18,8 +18,8 @@ import (
 
 	gosocketio "github.com/OpenBazaar/golang-socketio"
 	"github.com/OpenBazaar/golang-socketio/protocol"
-	"github.com/OpenBazaar/multiwallet/client/transport"
-	"github.com/OpenBazaar/multiwallet/model"
+	"github.com/phoreproject/multiwallet/client/transport"
+	"github.com/phoreproject/multiwallet/model"
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/btcsuite/btcd/chaincfg/chainhash"
 	"github.com/btcsuite/btcutil"

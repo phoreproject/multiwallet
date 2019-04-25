@@ -1,6 +1,6 @@
 package factory
 
-import "github.com/OpenBazaar/multiwallet/model"
+import "github.com/phoreproject/multiwallet/model"
 
 func NewTransaction() model.Transaction {
 	return model.Transaction{

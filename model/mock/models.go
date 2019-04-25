@@ -1,6 +1,6 @@
 package mock
 
-import "github.com/OpenBazaar/multiwallet/model"
+import "github.com/phoreproject/multiwallet/model"
 
 var MockInfo = model.Info{
 	Version:         1,

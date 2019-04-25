@@ -24,7 +24,7 @@ import (
 	"github.com/btcsuite/btcwallet/wallet/txrules"
 	"github.com/cpacia/bchutil"
 
-	"github.com/OpenBazaar/multiwallet/util"
+	"github.com/phoreproject/multiwallet/util"
 )
 
 func (w *BitcoinCashWallet) buildTx(amount int64, addr btc.Address, feeLevel wi.FeeLevel, optionalOutput *wire.TxOut) (*wire.MsgTx, error) {

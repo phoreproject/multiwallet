@@ -6,8 +6,8 @@ import (
 	"net/http"
 	"sync"
 
-	"github.com/OpenBazaar/multiwallet/client/blockbook"
-	"github.com/OpenBazaar/multiwallet/model"
+	"github.com/phoreproject/multiwallet/client/blockbook"
+	"github.com/phoreproject/multiwallet/model"
 	"github.com/btcsuite/btcutil"
 	"github.com/op/go-logging"
 	"golang.org/x/net/proxy"

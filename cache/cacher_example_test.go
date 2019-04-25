@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/OpenBazaar/multiwallet/cache"
+	"github.com/phoreproject/multiwallet/cache"
 )
 
 type testStructSubject struct {

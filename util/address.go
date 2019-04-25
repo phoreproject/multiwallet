@@ -1,8 +1,8 @@
 package util
 
 import (
-	liteaddr "github.com/OpenBazaar/multiwallet/litecoin/address"
-	zaddr "github.com/OpenBazaar/multiwallet/zcash/address"
+	liteaddr "github.com/phoreproject/multiwallet/litecoin/address"
+	zaddr "github.com/phoreproject/multiwallet/zcash/address"
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/btcsuite/btcutil"
 	"github.com/cpacia/bchutil"

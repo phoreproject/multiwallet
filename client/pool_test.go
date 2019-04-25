@@ -2,11 +2,11 @@ package client_test
 
 import (
 	"fmt"
-	"github.com/OpenBazaar/multiwallet/client"
-	"github.com/OpenBazaar/multiwallet/model"
-	"github.com/OpenBazaar/multiwallet/model/mock"
-	"github.com/OpenBazaar/multiwallet/test"
-	"github.com/OpenBazaar/multiwallet/test/factory"
+	"github.com/phoreproject/multiwallet/client"
+	"github.com/phoreproject/multiwallet/model"
+	"github.com/phoreproject/multiwallet/model/mock"
+	"github.com/phoreproject/multiwallet/test"
+	"github.com/phoreproject/multiwallet/test/factory"
 	"gopkg.in/jarcoal/httpmock.v1"
 	"net/http"
 	"testing"

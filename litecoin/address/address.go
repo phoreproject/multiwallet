@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"strings"
 
-	lparams "github.com/OpenBazaar/multiwallet/litecoin/params"
+	lparams "github.com/phoreproject/multiwallet/litecoin/params"
 	"github.com/btcsuite/btcd/btcec"
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/btcsuite/btcd/txscript"
