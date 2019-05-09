@@ -14,7 +14,7 @@ import (
 	"github.com/phoreproject/multiwallet/service"
 	"github.com/phoreproject/multiwallet/util"
 	zaddr "github.com/phoreproject/multiwallet/zcash/address"
-	"github.com/phoreproject/wallet-interface"
+	"github.com/OpenBazaar/wallet-interface"
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/btcsuite/btcd/chaincfg/chainhash"
 	"github.com/btcsuite/btcd/txscript"

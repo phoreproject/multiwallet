@@ -10,7 +10,7 @@ import (
 	"github.com/phoreproject/multiwallet/api"
 	"github.com/phoreproject/multiwallet/cli"
 	"github.com/phoreproject/multiwallet/config"
-	wi "github.com/phoreproject/wallet-interface"
+	wi "github.com/OpenBazaar/wallet-interface"
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/jessevdk/go-flags"
 )

@@ -10,7 +10,7 @@ import (
 	"github.com/phoreproject/multiwallet/datastore"
 	"github.com/phoreproject/multiwallet/keys"
 	"github.com/phoreproject/multiwallet/model/mock"
-	"github.com/phoreproject/wallet-interface"
+	"github.com/OpenBazaar/wallet-interface"
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/btcsuite/btcd/txscript"
 	"github.com/btcsuite/btcutil"

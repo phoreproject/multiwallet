@@ -12,13 +12,13 @@ import (
 	"github.com/phoreproject/multiwallet/keys"
 	"github.com/phoreproject/multiwallet/model/mock"
 	"github.com/phoreproject/multiwallet/service"
-	"github.com/phoreproject/wallet-interface"
+	"github.com/OpenBazaar/wallet-interface"
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/btcsuite/btcd/chaincfg/chainhash"
 	"github.com/btcsuite/btcd/wire"
 	"github.com/btcsuite/btcutil"
 	"github.com/btcsuite/btcutil/hdkeychain"
-	bcw "github.com/phoreproject/BitcoinCash-Wallet"
+	bcw "github.com/cpacia/BitcoinCash-Wallet"
 	"github.com/cpacia/bchutil"
 )
 

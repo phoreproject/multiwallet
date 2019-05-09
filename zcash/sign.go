@@ -10,8 +10,8 @@ import (
 	"github.com/minio/blake2b-simd"
 	"time"
 
-	"github.com/phoreproject/spvwallet"
-	wi "github.com/phoreproject/wallet-interface"
+	"github.com/OpenBazaar/spvwallet"
+	wi "github.com/OpenBazaar/wallet-interface"
 	"github.com/btcsuite/btcd/btcec"
 	"github.com/btcsuite/btcd/chaincfg/chainhash"
 	"github.com/btcsuite/btcd/txscript"
