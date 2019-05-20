@@ -8,13 +8,11 @@ import (
 	"github.com/phoreproject/multiwallet/bitcoin"
 	"github.com/phoreproject/multiwallet/bitcoincash"
 	"github.com/phoreproject/multiwallet/client/blockbook"
-	"github.com/phoreproject/multiwallet/client/insight"
 	"github.com/phoreproject/multiwallet/config"
 	"github.com/phoreproject/multiwallet/litecoin"
 	"github.com/phoreproject/multiwallet/service"
 	"github.com/phoreproject/multiwallet/zcash"
-
-	"github.com/OpenBazaar/wallet-interface"
+	"github.com/phoreproject/wallet-interface"
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/op/go-logging"
 	"github.com/tyler-smith/go-bip39"
@@ -29,7 +27,6 @@ type MultiWallet map[wallet.CoinType]wallet.Wallet
 func NewMultiWallet(cfg *config.Config) (MultiWallet, error) {
 	log.SetBackend(logging.AddModuleLevel(cfg.Logger))
 	service.Log = log
-	insight.Log = log
 	blockbook.Log = log
 
 	if cfg.Mnemonic == "" {
