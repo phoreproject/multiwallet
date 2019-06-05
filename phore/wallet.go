@@ -11,6 +11,9 @@ import (
 	"sync"
 	"time"
 
+	"github.com/phoreproject/multiwallet/cache"
+	"github.com/phoreproject/multiwallet/config"
+	"github.com/phoreproject/multiwallet/keys"
 	"github.com/phoreproject/multiwallet/util"
 
 	"github.com/OpenBazaar/spvwallet"
@@ -29,6 +32,7 @@ import (
 	"github.com/btcsuite/btcutil/txsort"
 	"github.com/btcsuite/btcwallet/wallet/txrules"
 	b39 "github.com/tyler-smith/go-bip39"
+	"golang.org/x/net/proxy"
 )
 
 // RPCWallet represents a wallet based on JSON-RPC and Bitcoind
@@ -42,11 +46,9 @@ type RPCWallet struct {
 
 	exchangeRates wallet.ExchangeRates
 
-	repoPath string
-
 	rpcClient *rpcclient.Client
 
-	km *KeyManager
+	km *keys.KeyManager
 
 	txstore       *TxStore
 	connCfg       *rpcclient.ConnConfig
@@ -58,12 +60,8 @@ type RPCWallet struct {
 }
 
 // NewPhoreWallet creates a new wallet given
-func NewPhoreWallet(mnemonic string, repoPath string, DB wallet.Datastore, host string) (*RPCWallet, error) {
-	if mnemonic == "" {
-		ent, _ := b39.NewEntropy(128)
-		mnemonic, _ = b39.NewMnemonic(ent)
-	}
-
+func NewPhoreWallet(cfg config.CoinConfig, mnemonic string, params *chaincfg.Params, proxy proxy.Dialer, cache cache.Cacher, disableExchangeRates bool) (*RPCWallet, error) {
+	host := "rpc2.phore.io"
 	connCfg := &rpcclient.ConnConfig{
 		Host:                 path.Join(host, "rpc"),
 		HTTPPostMode:         true,
@@ -72,15 +70,12 @@ func NewPhoreWallet(mnemonic string, repoPath string, DB wallet.Datastore, host 
 		DisableConnectOnNew:  false,
 	}
 
-	// TODO use Phore params
-	params := chaincfg.MainNetParams
-
 	seed, err := b39.NewSeedWithErrorChecking(mnemonic, "")
 	if err != nil {
 		return nil, err
 	}
 
-	mPrivKey, err := hd.NewMaster(seed, &params)
+	mPrivKey, err := hd.NewMaster(seed, params)
 	if err != nil {
 		return nil, err
 	}
@@ -89,19 +84,18 @@ func NewPhoreWallet(mnemonic string, repoPath string, DB wallet.Datastore, host 
 		return nil, err
 	}
 
-	keyManager, err := NewKeyManager(DB.Keys(), &params, mPrivKey)
+	keyManager, err := keys.NewKeyManager(cfg.DB.Keys(), params, mPrivKey, util.CoinTypePhore, keyToAddress)
 	if err != nil {
 		return nil, err
 	}
 
-	txstore, err := NewTxStore(&params, DB, keyManager)
+	txstore, err := NewTxStore(params, cfg.DB, keyManager)
 	if err != nil {
 		return nil, err
 	}
 
 	w := RPCWallet{
-		params:           &params,
-		repoPath:         repoPath,
+		params:           params,
 		masterPrivateKey: mPrivKey,
 		masterPublicKey:  mPubKey,
 		km:               keyManager,
@@ -111,6 +105,10 @@ func NewPhoreWallet(mnemonic string, repoPath string, DB wallet.Datastore, host 
 		rpcLock:          new(sync.Mutex),
 	}
 	return &w, nil
+}
+
+func keyToAddress(key *hd.ExtendedKey, params *chaincfg.Params) (btc.Address, error) {
+	return key.Address(params)
 }
 
 // Start sets up the rpc wallet
@@ -225,7 +223,7 @@ func (w *RPCWallet) Params() *chaincfg.Params {
 
 // CurrencyCode returns the currency code of the wallet
 func (w *RPCWallet) CurrencyCode() string {
-	if w.params.Name == chaincfg.MainNetParams.Name {
+	if w.params.Name == PhoreMainNetParams.Name {
 		return "phr"
 	} else {
 		return "tphr"
@@ -386,7 +384,7 @@ func (w *RPCWallet) GetFeePerByte(feeLevel wallet.FeeLevel) uint64 {
 }
 
 // Spend spends an amount from an address with a given fee level
-func (w *RPCWallet) Spend(amount int64, addr btc.Address, feeLevel wallet.FeeLevel) (*chainhash.Hash, error) {
+func (w *RPCWallet) Spend(amount int64, addr btc.Address, feeLevel wallet.FeeLevel, referenceID string, spendAll bool) (*chainhash.Hash, error) {
 	tx, err := w.buildTx(amount, addr, feeLevel, nil)
 	if err != nil {
 		return nil, err

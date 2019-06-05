@@ -1,11 +1,13 @@
 package config
 
 import (
+	"github.com/phoreproject/multiwallet/util"
 	"os"
 	"time"
 
 	"github.com/phoreproject/multiwallet/cache"
 	"github.com/phoreproject/multiwallet/datastore"
+
 	"github.com/OpenBazaar/wallet-interface"
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/op/go-logging"
@@ -85,6 +87,30 @@ func NewDefaultConfig(coinTypes map[wallet.CoinType]bool, params *chaincfg.Param
 		testnet = true
 	}
 	mockDB := datastore.NewMockMultiwalletDatastore()
+	if coinTypes[util.CoinTypePhore] {
+		var apiEndpoints []string
+		if !testnet {
+			apiEndpoints = []string{
+				"https://phr.blockbook.api.phore.io/api",
+			}
+		} else {
+			apiEndpoints = []string{
+				"https://tphr.blockbook.api.phore.io/api",
+			}
+		}
+		db, _ := mockDB.GetDatastoreForWallet(util.CoinTypePhore)
+		btcCfg := CoinConfig{
+			CoinType:   wallet.Bitcoin,
+			FeeAPI:     "",
+			LowFee:     140,
+			MediumFee:  160,
+			HighFee:    180,
+			MaxFee:     2000,
+			ClientAPIs: apiEndpoints,
+			DB:         db,
+		}
+		cfg.Coins = append(cfg.Coins, btcCfg)
+	}
 	if coinTypes[wallet.Bitcoin] {
 		var apiEndpoints []string
 		if !testnet {

@@ -13,6 +13,7 @@ import (
 	"github.com/btcsuite/btcd/wire"
 	"github.com/btcsuite/btcutil"
 	"github.com/btcsuite/btcutil/bloom"
+	"github.com/phoreproject/multiwallet/keys"
 
 	"github.com/OpenBazaar/wallet-interface"
 	"sync"
@@ -28,7 +29,7 @@ type TxStore struct {
 	addrMutex      *sync.Mutex
 	cbMutex        *sync.Mutex
 
-	keyManager *KeyManager
+	keyManager *keys.KeyManager
 
 	params *chaincfg.Params
 
@@ -38,7 +39,7 @@ type TxStore struct {
 }
 
 // NewTxStore creates a new tx store from the given chain parameters, database, and key manager
-func NewTxStore(p *chaincfg.Params, db wallet.Datastore, keyManager *KeyManager) (*TxStore, error) {
+func NewTxStore(p *chaincfg.Params, db wallet.Datastore, keyManager *keys.KeyManager) (*TxStore, error) {
 	txs := &TxStore{
 		params:     p,
 		keyManager: keyManager,
