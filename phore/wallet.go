@@ -61,6 +61,11 @@ type RPCWallet struct {
 
 // NewPhoreWallet creates a new wallet given
 func NewPhoreWallet(cfg config.CoinConfig, mnemonic string, params *chaincfg.Params, proxy proxy.Dialer, cache cache.Cacher, disableExchangeRates bool) (*RPCWallet, error) {
+	err := chaincfg.Register(&PhoreMainNetParams)
+	if err != nil {
+		return nil, err
+	}
+
 	host := "rpc2.phore.io"
 	connCfg := &rpcclient.ConnConfig{
 		Host:                 path.Join(host, "rpc"),
