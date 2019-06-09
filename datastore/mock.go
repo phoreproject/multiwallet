@@ -40,7 +40,7 @@ func (m *MockMultiwalletDatastore) GetDatastoreForWallet(coinType wallet.CoinTyp
 
 func NewMockMultiwalletDatastore() *MockMultiwalletDatastore {
 	db := make(map[wallet.CoinType]wallet.Datastore)
-	db[util.CoinTypePhore] = wallet.Datastore(&MockDatastore{
+	db[util.CoinTypePhore.ToCoinType()] = wallet.Datastore(&MockDatastore{
 		&MockKeyStore{Keys: make(map[string]*KeyStoreEntry)},
 		&MockUtxoStore{utxos: make(map[string]*wallet.Utxo)},
 		&MockStxoStore{stxos: make(map[string]*wallet.Stxo)},

@@ -12,6 +12,7 @@ import (
 	"github.com/phoreproject/multiwallet/litecoin"
 	"github.com/phoreproject/multiwallet/service"
 	"github.com/phoreproject/multiwallet/zcash"
+	"github.com/phoreproject/multiwallet/util"
 	"github.com/OpenBazaar/wallet-interface"
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/op/go-logging"
@@ -22,7 +23,7 @@ var log = logging.MustGetLogger("multiwallet")
 
 var UnsuppertedCoinError = errors.New("multiwallet does not contain an implementation for the given coin")
 
-type MultiWallet map[wallet.CoinType]wallet.Wallet
+type MultiWallet map[util.ExtCoinType]wallet.Wallet
 
 func NewMultiWallet(cfg *config.Config) (MultiWallet, error) {
 	log.SetBackend(logging.AddModuleLevel(cfg.Logger))
@@ -47,45 +48,45 @@ func NewMultiWallet(cfg *config.Config) (MultiWallet, error) {
 	for _, coin := range cfg.Coins {
 		var w wallet.Wallet
 		switch coin.CoinType {
-		case wallet.Bitcoin:
+		case util.ExtendCoinType(wallet.Bitcoin):
 			w, err = bitcoin.NewBitcoinWallet(coin, cfg.Mnemonic, cfg.Params, cfg.Proxy, cfg.Cache, cfg.DisableExchangeRates)
 			if err != nil {
 				return nil, err
 			}
 			if cfg.Params.Name == chaincfg.MainNetParams.Name {
-				multiwallet[wallet.Bitcoin] = w
+				multiwallet[util.ExtendCoinType(wallet.Bitcoin)] = w
 			} else {
-				multiwallet[wallet.TestnetBitcoin] = w
+				multiwallet[util.ExtendCoinType(wallet.TestnetBitcoin)] = w
 			}
-		case wallet.BitcoinCash:
+		case util.ExtendCoinType(wallet.BitcoinCash):
 			w, err = bitcoincash.NewBitcoinCashWallet(coin, cfg.Mnemonic, cfg.Params, cfg.Proxy, cfg.Cache, cfg.DisableExchangeRates)
 			if err != nil {
 				return nil, err
 			}
 			if cfg.Params.Name == chaincfg.MainNetParams.Name {
-				multiwallet[wallet.BitcoinCash] = w
+				multiwallet[util.ExtendCoinType(wallet.BitcoinCash)] = w
 			} else {
-				multiwallet[wallet.TestnetBitcoinCash] = w
+				multiwallet[util.ExtendCoinType(wallet.TestnetBitcoinCash)] = w
 			}
-		case wallet.Zcash:
+		case util.ExtendCoinType(wallet.Zcash):
 			w, err = zcash.NewZCashWallet(coin, cfg.Mnemonic, cfg.Params, cfg.Proxy, cfg.Cache, cfg.DisableExchangeRates)
 			if err != nil {
 				return nil, err
 			}
 			if cfg.Params.Name == chaincfg.MainNetParams.Name {
-				multiwallet[wallet.Zcash] = w
+				multiwallet[util.ExtendCoinType(wallet.Zcash)] = w
 			} else {
-				multiwallet[wallet.TestnetZcash] = w
+				multiwallet[util.ExtendCoinType(wallet.TestnetZcash)] = w
 			}
-		case wallet.Litecoin:
+		case util.ExtendCoinType(wallet.Litecoin):
 			w, err = litecoin.NewLitecoinWallet(coin, cfg.Mnemonic, cfg.Params, cfg.Proxy, cfg.Cache, cfg.DisableExchangeRates)
 			if err != nil {
 				return nil, err
 			}
 			if cfg.Params.Name == chaincfg.MainNetParams.Name {
-				multiwallet[wallet.Litecoin] = w
+				multiwallet[util.ExtendCoinType(wallet.Litecoin)] = w
 			} else {
-				multiwallet[wallet.TestnetLitecoin] = w
+				multiwallet[util.ExtendCoinType(wallet.TestnetLitecoin)] = w
 			}
 			//case wallet.Ethereum:
 			//w, err = eth.NewEthereumWallet(coin, cfg.Mnemonic, cfg.Proxy)

@@ -2,5 +2,51 @@ package util
 
 import "github.com/OpenBazaar/wallet-interface"
 
-const CoinTypePhore wallet.CoinType = wallet.CoinType(11772)
-const CoinTypePhoreTest wallet.CoinType = wallet.CoinType(1011772)
+type ExtCoinType wallet.CoinType
+
+func ExtendCoinType(coinType wallet.CoinType) ExtCoinType {
+	return ExtCoinType(uint32(coinType))
+}
+
+const (
+	CoinTypePhore     ExtCoinType = 11772
+	CoinTypePhoreTest             = 1011772
+)
+
+func (c *ExtCoinType) String() string {
+	ct := wallet.CoinType(uint32(*c))
+	str := ct.String()
+	if str != "" {
+		return str
+	}
+
+	switch *c {
+	case CoinTypePhore:
+		return "Phore"
+	case CoinTypePhoreTest:
+		return "Testnet Phore"
+	default:
+		return ""
+	}
+}
+
+func (c *ExtCoinType) CurrencyCode() string {
+	ct := wallet.CoinType(uint32(*c))
+	str := ct.String()
+	if str != "" {
+		return str
+	}
+
+	switch *c {
+	case CoinTypePhore:
+		return "PHR"
+	case CoinTypePhoreTest:
+		return "TPHR"
+	default:
+		return ""
+	}
+}
+
+func (c ExtCoinType) ToCoinType() wallet.CoinType {
+	return wallet.CoinType(uint32(c))
+}

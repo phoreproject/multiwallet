@@ -50,7 +50,7 @@ type Config struct {
 
 type CoinConfig struct {
 	// The type of coin to configure
-	CoinType wallet.CoinType
+	CoinType util.ExtCoinType
 
 	// The default fee-per-byte for each level
 	LowFee    uint64
@@ -87,7 +87,7 @@ func NewDefaultConfig(coinTypes map[wallet.CoinType]bool, params *chaincfg.Param
 		testnet = true
 	}
 	mockDB := datastore.NewMockMultiwalletDatastore()
-	if coinTypes[util.CoinTypePhore] {
+	if coinTypes[util.CoinTypePhore.ToCoinType()] {
 		var apiEndpoints []string
 		if !testnet {
 			apiEndpoints = []string{
@@ -98,9 +98,9 @@ func NewDefaultConfig(coinTypes map[wallet.CoinType]bool, params *chaincfg.Param
 				"https://tphr.blockbook.api.phore.io/api",
 			}
 		}
-		db, _ := mockDB.GetDatastoreForWallet(util.CoinTypePhore)
+		db, _ := mockDB.GetDatastoreForWallet(util.CoinTypePhore.ToCoinType())
 		btcCfg := CoinConfig{
-			CoinType:   wallet.Bitcoin,
+			CoinType:   util.ExtendCoinType(wallet.Bitcoin),
 			FeeAPI:     "",
 			LowFee:     140,
 			MediumFee:  160,
@@ -130,7 +130,7 @@ func NewDefaultConfig(coinTypes map[wallet.CoinType]bool, params *chaincfg.Param
 		feeApi := "https://btc.fees.openbazaar.org"
 		db, _ := mockDB.GetDatastoreForWallet(wallet.Bitcoin)
 		btcCfg := CoinConfig{
-			CoinType:   wallet.Bitcoin,
+			CoinType:   util.ExtendCoinType(wallet.Bitcoin),
 			FeeAPI:     feeApi,
 			LowFee:     140,
 			MediumFee:  160,

@@ -89,7 +89,7 @@ func NewPhoreWallet(cfg config.CoinConfig, mnemonic string, params *chaincfg.Par
 		return nil, err
 	}
 
-	keyManager, err := keys.NewKeyManager(cfg.DB.Keys(), params, mPrivKey, util.CoinTypePhore, keyToAddress)
+	keyManager, err := keys.NewKeyManager(cfg.DB.Keys(), params, mPrivKey, util.CoinTypePhore.ToCoinType(), keyToAddress)
 	if err != nil {
 		return nil, err
 	}
