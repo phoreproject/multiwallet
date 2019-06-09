@@ -99,6 +99,11 @@ func NewPhoreWallet(cfg config.CoinConfig, mnemonic string, params *chaincfg.Par
 		return nil, err
 	}
 
+	er := NewPhorePriceFetcher(proxy)
+	if !disableExchangeRates {
+		go er.Run()
+	}
+
 	w := RPCWallet{
 		params:           params,
 		masterPrivateKey: mPrivKey,
