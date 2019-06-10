@@ -71,7 +71,7 @@ func connectToWebsocket(n *NotificationListener, dialer *websocket.Dialer, url u
 
 func startNotificationListener(wallet *RPCWallet) (*NotificationListener, error) {
 	notificationListener := &NotificationListener{wallet: wallet}
-	websocketURL := url.URL{Scheme: "wss", Host: wallet.rpcBasePath, Path: "/ws"}
+	websocketURL := url.URL{Scheme: "wss", Host: "rpc2.phore.io", Path: "/ws"}
 
 	dialerWithCookies := websocket.DefaultDialer
 	dialerWithCookies.Jar = *new(http.CookieJar)
