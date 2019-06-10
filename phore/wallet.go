@@ -37,26 +37,20 @@ import (
 
 // RPCWallet represents a wallet based on JSON-RPC and Bitcoind
 type RPCWallet struct {
-	params *chaincfg.Params
-
+	params           *chaincfg.Params
 	masterPrivateKey *hd.ExtendedKey
 	masterPublicKey  *hd.ExtendedKey
-
-	mnemonic string
-
-	exchangeRates wallet.ExchangeRates
-
-	rpcClient *rpcclient.Client
-
-	km *keys.KeyManager
-
-	txstore       *TxStore
-	connCfg       *rpcclient.ConnConfig
-	notifications *NotificationListener
-	rpcBasePath   string
-	rpcLock       *sync.Mutex
+	mnemonic         string
+	exchangeRates    wallet.ExchangeRates
+	km               *keys.KeyManager
+	txstore          *TxStore
+	connCfg          *rpcclient.ConnConfig
+	rpcLock          *sync.Mutex
 
 	started bool
+
+	rpcClient     *rpcclient.Client
+	notifications *NotificationListener
 }
 
 // NewPhoreWallet creates a new wallet given
@@ -99,20 +93,22 @@ func NewPhoreWallet(cfg config.CoinConfig, mnemonic string, params *chaincfg.Par
 		return nil, err
 	}
 
-	er := NewPhorePriceFetcher(proxy)
+	exchRate := NewPhorePriceFetcher(proxy)
 	if !disableExchangeRates {
-		go er.Run()
+		go exchRate.Run()
 	}
 
 	w := RPCWallet{
 		params:           params,
 		masterPrivateKey: mPrivKey,
 		masterPublicKey:  mPubKey,
+		mnemonic:         mnemonic,
+		exchangeRates:    exchRate,
 		km:               keyManager,
 		txstore:          txstore,
 		connCfg:          connCfg,
-		rpcBasePath:      host,
 		rpcLock:          new(sync.Mutex),
+		started:          false,
 	}
 	return &w, nil
 }
