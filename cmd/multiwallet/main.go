@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/phoreproject/multiwallet/util"
 	"os"
 	"os/signal"
 	"sync"
@@ -63,6 +64,7 @@ func (x *Start) Execute(args []string) error {
 	m[wi.Zcash] = true
 	m[wi.Litecoin] = true
 	m[wi.Ethereum] = true
+	m[util.CoinTypePhore.ToCoinType()] = true
 	params := &chaincfg.MainNetParams
 	if x.Testnet {
 		params = &chaincfg.TestNet3Params
