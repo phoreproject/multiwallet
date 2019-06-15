@@ -32,7 +32,7 @@ func (c *ExtCoinType) String() string {
 
 func (c *ExtCoinType) CurrencyCode() string {
 	ct := wallet.CoinType(uint32(*c))
-	str := ct.String()
+	str := ct.CurrencyCode()
 	if str != "" {
 		return str
 	}
