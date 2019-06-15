@@ -50,7 +50,13 @@ func NewMultiWallet(cfg *config.Config) (MultiWallet, error) {
 		var w wallet.Wallet
 		switch coin.CoinType {
 		case util.CoinTypePhore:
-			w, err = phore.NewPhoreWallet(coin, cfg.Mnemonic, cfg.Params, cfg.Proxy, cfg.Cache, cfg.DisableExchangeRates)
+			var params chaincfg.Params
+			if cfg.Params.Name == phore.PhoreMainNetParams.Name {
+				params = phore.PhoreMainNetParams
+			} else {
+				params = phore.PhoreTestNetParams
+			}
+			w, err = phore.NewPhoreWallet(coin, cfg.Mnemonic, &params, cfg.Proxy, cfg.Cache, cfg.DisableExchangeRates)
 			if err != nil {
 				return nil, err
 			}

@@ -99,8 +99,8 @@ func NewDefaultConfig(coinTypes map[wallet.CoinType]bool, params *chaincfg.Param
 			}
 		}
 		db, _ := mockDB.GetDatastoreForWallet(util.CoinTypePhore.ToCoinType())
-		btcCfg := CoinConfig{
-			CoinType:   util.ExtendCoinType(wallet.Bitcoin),
+		phrCfg := CoinConfig{
+			CoinType:   util.CoinTypePhore,
 			FeeAPI:     "",
 			LowFee:     140,
 			MediumFee:  160,
@@ -109,7 +109,7 @@ func NewDefaultConfig(coinTypes map[wallet.CoinType]bool, params *chaincfg.Param
 			ClientAPIs: apiEndpoints,
 			DB:         db,
 		}
-		cfg.Coins = append(cfg.Coins, btcCfg)
+		cfg.Coins = append(cfg.Coins, phrCfg)
 	}
 	if coinTypes[wallet.Bitcoin] {
 		var apiEndpoints []string
