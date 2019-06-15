@@ -2,6 +2,7 @@ package multiwallet
 
 import (
 	"errors"
+	"github.com/phoreproject/multiwallet/phore"
 	"strings"
 	"time"
 
@@ -48,6 +49,16 @@ func NewMultiWallet(cfg *config.Config) (MultiWallet, error) {
 	for _, coin := range cfg.Coins {
 		var w wallet.Wallet
 		switch coin.CoinType {
+		case util.CoinTypePhore:
+			w, err = phore.NewPhoreWallet(coin, cfg.Mnemonic, cfg.Params, cfg.Proxy, cfg.Cache, cfg.DisableExchangeRates)
+			if err != nil {
+				return nil, err
+			}
+			if cfg.Params.Name == phore.PhoreMainNetParams.Name {
+				multiwallet[util.CoinTypePhore] = w
+			} else {
+				multiwallet[util.CoinTypePhoreTest] = w
+			}
 		case util.ExtendCoinType(wallet.Bitcoin):
 			w, err = bitcoin.NewBitcoinWallet(coin, cfg.Mnemonic, cfg.Params, cfg.Proxy, cfg.Cache, cfg.DisableExchangeRates)
 			if err != nil {
