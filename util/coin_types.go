@@ -9,8 +9,8 @@ func ExtendCoinType(coinType wallet.CoinType) ExtCoinType {
 }
 
 const (
-	CoinTypePhore     ExtCoinType = 11772
-	CoinTypePhoreTest             = 1011772
+	CoinTypePhore     ExtCoinType = 444
+	CoinTypePhoreTest             = 1000444
 )
 
 func (c *ExtCoinType) String() string {
