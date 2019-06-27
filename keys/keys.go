@@ -6,6 +6,7 @@ import (
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/btcsuite/btcutil"
 	hd "github.com/btcsuite/btcutil/hdkeychain"
+	"github.com/phoreproject/multiwallet/util"
 )
 
 const LOOKAHEADWINDOW = 20
@@ -17,13 +18,13 @@ type KeyManager struct {
 	internalKey *hd.ExtendedKey
 	externalKey *hd.ExtendedKey
 
-	coinType wallet.CoinType
+	coinType util.ExtCoinType
 	getAddr  AddrFunc
 }
 
 type AddrFunc func(k *hd.ExtendedKey, net *chaincfg.Params) (btcutil.Address, error)
 
-func NewKeyManager(db wallet.Keys, params *chaincfg.Params, masterPrivKey *hd.ExtendedKey, coinType wallet.CoinType, getAddr AddrFunc) (*KeyManager, error) {
+func NewKeyManager(db wallet.Keys, params *chaincfg.Params, masterPrivKey *hd.ExtendedKey, coinType util.ExtCoinType, getAddr AddrFunc) (*KeyManager, error) {
 	internal, external, err := Bip44Derivation(masterPrivKey, coinType)
 	if err != nil {
 		return nil, err
@@ -43,7 +44,7 @@ func NewKeyManager(db wallet.Keys, params *chaincfg.Params, masterPrivKey *hd.Ex
 }
 
 // m / purpose' / coin_type' / account' / change / address_index
-func Bip44Derivation(masterPrivKey *hd.ExtendedKey, coinType wallet.CoinType) (internal, external *hd.ExtendedKey, err error) {
+func Bip44Derivation(masterPrivKey *hd.ExtendedKey, coinType util.ExtCoinType) (internal, external *hd.ExtendedKey, err error) {
 	// Purpose = bip44
 	fourtyFour, err := masterPrivKey.Child(hd.HardenedKeyStart + 44)
 	if err != nil {

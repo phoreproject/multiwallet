@@ -33,7 +33,7 @@ type WalletService struct {
 	km       *keys.KeyManager
 	client   model.APIClient
 	params   *chaincfg.Params
-	coinType wallet.CoinType
+	coinType util.ExtCoinType
 
 	chainHeight uint32
 	bestBlock   string
@@ -54,7 +54,7 @@ type HashAndHeight struct {
 
 const nullHash = "0000000000000000000000000000000000000000000000000000000000000000"
 
-func NewWalletService(db wallet.Datastore, km *keys.KeyManager, client model.APIClient, params *chaincfg.Params, coinType wallet.CoinType, cache cache.Cacher) (*WalletService, error) {
+func NewWalletService(db wallet.Datastore, km *keys.KeyManager, client model.APIClient, params *chaincfg.Params, coinType util.ExtCoinType, cache cache.Cacher) (*WalletService, error) {
 	var (
 		ws = &WalletService{
 			db:          db,
@@ -153,7 +153,7 @@ func (ws *WalletService) ProcessIncomingTransaction(tx model.Transaction) {
 					utxo := model.Utxo{
 						Txid:          tx.Txid,
 						ScriptPubKey:  out.ScriptPubKey.Hex,
-						Satoshis:      int64(math.Round(out.Value * float64(util.SatoshisPerCoin(ws.coinType)))),
+						Satoshis:      int64(math.Round(out.Value * float64(util.SatoshisPerCoin(ws.coinType.ToCoinType())))),
 						Vout:          out.N,
 						Address:       addr,
 						Confirmations: 0,
@@ -446,7 +446,7 @@ func (ws *WalletService) saveSingleTxToDB(u model.Transaction, chainHeight int32
 			Log.Errorf("error converting outpoint hash for %s: %s", ws.coinType.String(), err.Error())
 			return
 		}
-		v := int64(math.Round(in.Value * float64(util.SatoshisPerCoin(ws.coinType))))
+		v := int64(math.Round(in.Value * float64(util.SatoshisPerCoin(ws.coinType.ToCoinType()))))
 		cbin := wallet.TransactionInput{
 			OutpointHash:  h,
 			OutpointIndex: op.Index,
@@ -484,7 +484,7 @@ func (ws *WalletService) saveSingleTxToDB(u model.Transaction, chainHeight int32
 			continue
 		}
 
-		v := int64(math.Round(out.Value * float64(util.SatoshisPerCoin(ws.coinType))))
+		v := int64(math.Round(out.Value * float64(util.SatoshisPerCoin(ws.coinType.ToCoinType()))))
 
 		txout := wire.NewTxOut(v, script)
 		msgTx.TxOut = append(msgTx.TxOut, txout)
@@ -579,7 +579,7 @@ func (ws *WalletService) getStoredAddresses() map[string]storedAddress {
 	for _, script := range watchScripts {
 		var addr btcutil.Address
 		switch ws.coinType {
-		case wallet.Bitcoin:
+		case util.ExtendCoinType(wallet.Bitcoin):
 			_, addrSlice, _, err := txscript.ExtractPkScriptAddrs(script, ws.params)
 			if err != nil {
 				Log.Warningf("error serializing %s script: %s", ws.coinType.String(), err.Error())
@@ -590,27 +590,30 @@ func (ws *WalletService) getStoredAddresses() map[string]storedAddress {
 				continue
 			}
 			addr = addrSlice[0]
-		case wallet.BitcoinCash:
+		case util.ExtendCoinType(wallet.BitcoinCash):
 			cashAddr, err := bchutil.ExtractPkScriptAddrs(script, ws.params)
 			if err != nil {
 				Log.Warningf("error serializing %s script: %s", ws.coinType.String(), err.Error())
 				continue
 			}
 			addr = cashAddr
-		case wallet.Zcash:
+		case util.ExtendCoinType(wallet.Zcash):
 			zAddr, err := zaddr.ExtractPkScriptAddrs(script, ws.params)
 			if err != nil {
 				Log.Warningf("error serializing %s script: %s", ws.coinType.String(), err.Error())
 				continue
 			}
 			addr = zAddr
-		case wallet.Litecoin:
+		case util.ExtendCoinType(wallet.Litecoin):
 			ltcAddr, err := laddr.ExtractPkScriptAddrs(script, ws.params)
 			if err != nil {
 				Log.Warningf("error serializing %s script: %s", ws.coinType.String(), err.Error())
 				continue
 			}
 			addr = ltcAddr
+		case util.CoinTypePhore:
+			//TODO impl
+			Log.Warningf("Not implemented yet for Phore!!")
 		}
 		addrs[addr.String()] = storedAddress{addr, true}
 	}

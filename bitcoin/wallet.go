@@ -54,7 +54,7 @@ func NewBitcoinWallet(cfg config.CoinConfig, mnemonic string, params *chaincfg.P
 	if err != nil {
 		return nil, err
 	}
-	km, err := keys.NewKeyManager(cfg.DB.Keys(), params, mPrivKey, wi.Bitcoin, keyToAddress)
+	km, err := keys.NewKeyManager(cfg.DB.Keys(), params, mPrivKey, util.ExtendCoinType(wi.Bitcoin), keyToAddress)
 	if err != nil {
 		return nil, err
 	}
@@ -68,7 +68,7 @@ func NewBitcoinWallet(cfg config.CoinConfig, mnemonic string, params *chaincfg.P
 		go er.Run()
 	}
 
-	wm, err := service.NewWalletService(cfg.DB, km, c, params, wi.Bitcoin, cache)
+	wm, err := service.NewWalletService(cfg.DB, km, c, params, util.ExtendCoinType(wi.Bitcoin), cache)
 	if err != nil {
 		return nil, err
 	}
