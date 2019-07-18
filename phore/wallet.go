@@ -715,12 +715,10 @@ func (w *RPCWallet) SweepAddress(ins []wallet.TransactionInput, address *btc.Add
 	})
 
 	// Check if time locked
-	var timeLocked bool
 	if redeemScript != nil {
 		rs := *redeemScript
 		if rs[0] == txscript.OP_IF {
-			timeLocked = true
-			tx.Version = 2
+			tx.Version = wire.TxVersion
 			for _, txIn := range tx.TxIn {
 				locktime, err := spvwallet.LockTimeFromRedeemScript(*redeemScript)
 				if err != nil {
@@ -731,34 +729,21 @@ func (w *RPCWallet) SweepAddress(ins []wallet.TransactionInput, address *btc.Add
 		}
 	}
 
-	hashes := txscript.NewTxSigHashes(tx)
 	for i, txIn := range tx.TxIn {
-		if redeemScript == nil {
-			prevOutScript := additionalPrevScripts[txIn.PreviousOutPoint]
-			script, err := txscript.SignTxOutput(w.params,
-				tx, i, prevOutScript, txscript.SigHashAll, getKey,
-				getScript, txIn.SignatureScript)
-			if err != nil {
-				return nil, errors.New("Failed to sign transaction")
-			}
-			txIn.SignatureScript = script
-		} else {
-			sig, err := txscript.RawTxInWitnessSignature(tx, hashes, i, ins[i].Value, *redeemScript, txscript.SigHashAll, privKey)
-			if err != nil {
-				return nil, err
-			}
-			var witness wire.TxWitness
-			if timeLocked {
-				witness = wire.TxWitness{sig, []byte{}}
-			} else {
-				witness = wire.TxWitness{[]byte{}, sig}
-			}
-			witness = append(witness, *redeemScript)
-			txIn.Witness = witness
+		prevOutScript := additionalPrevScripts[txIn.PreviousOutPoint]
+		script, err := txscript.SignTxOutput(w.params,
+			tx, i, prevOutScript, txscript.SigHashAll, getKey,
+			getScript, txIn.SignatureScript)
+		if err != nil {
+			return nil, errors.New("Failed to sign transaction")
 		}
+		txIn.SignatureScript = script
 	}
 
-	w.Broadcast(tx)
+	err = w.Broadcast(tx)
+	if err != nil {
+		log.Errorf("SweepAddress.Broadcast error: %s", err)
+	}
 	txid := tx.TxHash()
 	return &txid, nil
 }
