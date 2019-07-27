@@ -6,9 +6,9 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/jessevdk/go-flags"
 	"github.com/phoreproject/multiwallet/api"
 	"github.com/phoreproject/multiwallet/api/pb"
-	"github.com/jessevdk/go-flags"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 )

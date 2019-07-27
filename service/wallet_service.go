@@ -10,12 +10,6 @@ import (
 	"sync"
 	"time"
 
-	"github.com/phoreproject/multiwallet/cache"
-	"github.com/phoreproject/multiwallet/keys"
-	laddr "github.com/phoreproject/multiwallet/litecoin/address"
-	"github.com/phoreproject/multiwallet/model"
-	"github.com/phoreproject/multiwallet/util"
-	zaddr "github.com/phoreproject/multiwallet/zcash/address"
 	"github.com/OpenBazaar/wallet-interface"
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/btcsuite/btcd/chaincfg/chainhash"
@@ -24,6 +18,12 @@ import (
 	"github.com/btcsuite/btcutil"
 	"github.com/cpacia/bchutil"
 	"github.com/op/go-logging"
+	"github.com/phoreproject/multiwallet/cache"
+	"github.com/phoreproject/multiwallet/keys"
+	laddr "github.com/phoreproject/multiwallet/litecoin/address"
+	"github.com/phoreproject/multiwallet/model"
+	"github.com/phoreproject/multiwallet/util"
+	zaddr "github.com/phoreproject/multiwallet/zcash/address"
 )
 
 var Log = logging.MustGetLogger("WalletService")

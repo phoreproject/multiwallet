@@ -6,13 +6,6 @@ import (
 	"testing"
 	"time"
 
-	"github.com/phoreproject/multiwallet/cache"
-	"github.com/phoreproject/multiwallet/datastore"
-	"github.com/phoreproject/multiwallet/keys"
-	laddr "github.com/phoreproject/multiwallet/litecoin/address"
-	"github.com/phoreproject/multiwallet/model/mock"
-	"github.com/phoreproject/multiwallet/service"
-	"github.com/phoreproject/multiwallet/util"
 	"github.com/OpenBazaar/wallet-interface"
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/btcsuite/btcd/chaincfg/chainhash"
@@ -20,6 +13,13 @@ import (
 	"github.com/btcsuite/btcd/wire"
 	"github.com/btcsuite/btcutil"
 	"github.com/btcsuite/btcutil/hdkeychain"
+	"github.com/phoreproject/multiwallet/cache"
+	"github.com/phoreproject/multiwallet/datastore"
+	"github.com/phoreproject/multiwallet/keys"
+	laddr "github.com/phoreproject/multiwallet/litecoin/address"
+	"github.com/phoreproject/multiwallet/model/mock"
+	"github.com/phoreproject/multiwallet/service"
+	"github.com/phoreproject/multiwallet/util"
 )
 
 type FeeResponse struct {

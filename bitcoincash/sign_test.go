@@ -9,11 +9,6 @@ import (
 	"testing"
 	"time"
 
-	"github.com/phoreproject/multiwallet/cache"
-	"github.com/phoreproject/multiwallet/datastore"
-	"github.com/phoreproject/multiwallet/keys"
-	"github.com/phoreproject/multiwallet/model/mock"
-	"github.com/phoreproject/multiwallet/service"
 	"github.com/OpenBazaar/wallet-interface"
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/btcsuite/btcd/chaincfg/chainhash"
@@ -24,6 +19,11 @@ import (
 	"github.com/cpacia/bchutil"
 	bchhash "github.com/gcash/bchd/chaincfg/chainhash"
 	bchwire "github.com/gcash/bchd/wire"
+	"github.com/phoreproject/multiwallet/cache"
+	"github.com/phoreproject/multiwallet/datastore"
+	"github.com/phoreproject/multiwallet/keys"
+	"github.com/phoreproject/multiwallet/model/mock"
+	"github.com/phoreproject/multiwallet/service"
 )
 
 type FeeResponse struct {

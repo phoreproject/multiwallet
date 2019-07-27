@@ -6,17 +6,17 @@ import (
 	"strings"
 	"time"
 
+	"github.com/OpenBazaar/wallet-interface"
+	"github.com/btcsuite/btcd/chaincfg"
+	"github.com/op/go-logging"
 	"github.com/phoreproject/multiwallet/bitcoin"
 	"github.com/phoreproject/multiwallet/bitcoincash"
 	"github.com/phoreproject/multiwallet/client/blockbook"
 	"github.com/phoreproject/multiwallet/config"
 	"github.com/phoreproject/multiwallet/litecoin"
 	"github.com/phoreproject/multiwallet/service"
-	"github.com/phoreproject/multiwallet/zcash"
 	"github.com/phoreproject/multiwallet/util"
-	"github.com/OpenBazaar/wallet-interface"
-	"github.com/btcsuite/btcd/chaincfg"
-	"github.com/op/go-logging"
+	"github.com/phoreproject/multiwallet/zcash"
 	"github.com/tyler-smith/go-bip39"
 )
 

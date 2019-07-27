@@ -7,9 +7,9 @@ import (
 	"sync"
 
 	gosocketio "github.com/OpenBazaar/golang-socketio"
+	"github.com/btcsuite/btcutil"
 	"github.com/phoreproject/multiwallet/client"
 	"github.com/phoreproject/multiwallet/model"
-	"github.com/btcsuite/btcutil"
 )
 
 type MockAPIClient struct {
