@@ -15,6 +15,20 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:a2b5afc4a59e534f89daa418553fb55a199c4342a856819c6c343d660831bdef"
+  name = "github.com/OpenBazaar/multiwallet"
+  packages = [
+    "client/errors",
+    "litecoin/address",
+    "litecoin/params",
+    "util",
+    "zcash/address",
+  ]
+  pruneopts = "UT"
+  revision = "6676c2bc74f94100422a114be64f9d13cd933fc0"
+
+[[projects]]
+  branch = "master"
   digest = "1:3861bd7ece0e78ea465eb4c2ee12391a2759755220c89729a7033b4af98b42e3"
   name = "github.com/OpenBazaar/spvwallet"
   packages = [
@@ -42,17 +56,19 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:4f1545a9a908c3f3d7c5d6c93baa76c3bb2f6369eb08a58f06d91487946625cc"
+  digest = "1:9ea121968c59b51fd90167594e8dab47e89635b1749ec790d816929fd1a87699"
   name = "github.com/btcsuite/btcd"
   packages = [
     "addrmgr",
     "blockchain",
     "btcec",
+    "btcjson",
     "chaincfg",
     "chaincfg/chainhash",
     "connmgr",
     "database",
     "peer",
+    "rpcclient",
     "txscript",
     "wire",
   ]
@@ -126,6 +142,14 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:0b2242fd2f4f51fb491e97e204464f75da680897a0db10ec7554c87b71b5afc3"
+  name = "github.com/btcsuite/websocket"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "31079b6807923eb23992c421b114992b95131b55"
+
+[[projects]]
+  branch = "master"
   digest = "1:78097abc20f73ec968b3f67bf74deda55009caa4b801d0d04f36145c869ab3c3"
   name = "github.com/cevaris/ordered_map"
   packages = ["."]
@@ -141,7 +165,7 @@
     "exchangerates",
   ]
   pruneopts = "UT"
-  revision = "120e3ce483c4704ddc527525f65b454796904b3f"
+  revision = "ba9295daa6d43b4cbd3f88e925379f0cf025b6b9"
 
 [[projects]]
   branch = "master"
@@ -158,6 +182,47 @@
   pruneopts = "UT"
   revision = "8991bc29aa16c548c550c7ff78260e27b9ab7c73"
   version = "v1.1.1"
+
+[[projects]]
+  digest = "1:1e9a0ec4f7e852123fefad9aadd7647eed1e9fd3716118e99a4b3dc463705c82"
+  name = "github.com/dchest/siphash"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "34f201214d993633bb24f418ba11736ab8b55aa7"
+  version = "v1.2.1"
+
+[[projects]]
+  digest = "1:154538d29f26d251dfe9b38f2e7be0f404eecb0dc21c8fa973b21dd74d8bcdce"
+  name = "github.com/gcash/bchd"
+  packages = [
+    "bchec",
+    "chaincfg",
+    "chaincfg/chainhash",
+    "txscript",
+    "wire",
+  ]
+  pruneopts = "UT"
+  revision = "385d819ea501b78c3c9b4c91d48950017e9bdba2"
+  version = "v0.15.0"
+
+[[projects]]
+  branch = "master"
+  digest = "1:b1053b781e9090dab5d3e916eb04c8d85b63a7f6911007c2cd1dd82fb22f7f6a"
+  name = "github.com/gcash/bchlog"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "b4f036f92fa66c88eec458f4531ff14ff87704d6"
+
+[[projects]]
+  branch = "master"
+  digest = "1:b1c06051d563f82aa7ec6cb3f759d51301936cc0426933c7c567d8f2fd004c59"
+  name = "github.com/gcash/bchutil"
+  packages = [
+    ".",
+    "base58",
+  ]
+  pruneopts = "UT"
+  revision = "98e73ec336ba521482403cf7cda69281170e50e0"
 
 [[projects]]
   branch = "master"
@@ -385,18 +450,23 @@
     "github.com/OpenBazaar/golang-socketio",
     "github.com/OpenBazaar/golang-socketio/protocol",
     "github.com/OpenBazaar/golang-socketio/transport",
+    "github.com/OpenBazaar/multiwallet/client/errors",
+    "github.com/OpenBazaar/multiwallet/util",
     "github.com/OpenBazaar/spvwallet",
     "github.com/OpenBazaar/spvwallet/exchangerates",
     "github.com/OpenBazaar/wallet-interface",
     "github.com/btcsuite/btcd/blockchain",
     "github.com/btcsuite/btcd/btcec",
+    "github.com/btcsuite/btcd/btcjson",
     "github.com/btcsuite/btcd/chaincfg",
     "github.com/btcsuite/btcd/chaincfg/chainhash",
+    "github.com/btcsuite/btcd/rpcclient",
     "github.com/btcsuite/btcd/txscript",
     "github.com/btcsuite/btcd/wire",
     "github.com/btcsuite/btcutil",
     "github.com/btcsuite/btcutil/base58",
     "github.com/btcsuite/btcutil/bech32",
+    "github.com/btcsuite/btcutil/bloom",
     "github.com/btcsuite/btcutil/coinset",
     "github.com/btcsuite/btcutil/hdkeychain",
     "github.com/btcsuite/btcutil/txsort",
@@ -406,6 +476,9 @@
     "github.com/cpacia/BitcoinCash-Wallet",
     "github.com/cpacia/BitcoinCash-Wallet/exchangerates",
     "github.com/cpacia/bchutil",
+    "github.com/gcash/bchd/chaincfg/chainhash",
+    "github.com/gcash/bchd/txscript",
+    "github.com/gcash/bchd/wire",
     "github.com/golang/protobuf/proto",
     "github.com/golang/protobuf/ptypes/timestamp",
     "github.com/gorilla/websocket",
