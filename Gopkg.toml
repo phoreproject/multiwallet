@@ -24,6 +24,7 @@
 #   go-tests = true
 #   unused-packages = true
 
+
 [[constraint]]
   branch = "master"
   name = "github.com/OpenBazaar/golang-socketio"
@@ -51,10 +52,6 @@
 [[constraint]]
   branch = "master"
   name = "github.com/btcsuite/golangcrypto"
-
-[[constraint]]
-  branch = "master"
-  name = "github.com/cpacia/BitcoinCash-Wallet"
 
 [[constraint]]
   branch = "master"

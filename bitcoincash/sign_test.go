@@ -3,7 +3,6 @@ package bitcoincash
 import (
 	"bytes"
 	"encoding/hex"
-	"github.com/OpenBazaar/multiwallet/util"
 	"github.com/gcash/bchd/txscript"
 	"os"
 	"testing"
@@ -15,7 +14,6 @@ import (
 	"github.com/btcsuite/btcd/wire"
 	"github.com/btcsuite/btcutil"
 	"github.com/btcsuite/btcutil/hdkeychain"
-	bcw "github.com/cpacia/BitcoinCash-Wallet"
 	"github.com/cpacia/bchutil"
 	bchhash "github.com/gcash/bchd/chaincfg/chainhash"
 	bchwire "github.com/gcash/bchd/wire"
@@ -24,6 +22,7 @@ import (
 	"github.com/phoreproject/multiwallet/keys"
 	"github.com/phoreproject/multiwallet/model/mock"
 	"github.com/phoreproject/multiwallet/service"
+	"github.com/phoreproject/multiwallet/util"
 )
 
 type FeeResponse struct {
@@ -54,7 +53,7 @@ func newMockWallet() (*BitcoinCashWallet, error) {
 		return nil, err
 	}
 
-	fp := bcw.NewFeeProvider(2000, 300, 200, 100, nil)
+	fp := util.NewFeeProvider(2000, 300, 200, 100, nil)
 
 	bw := &BitcoinCashWallet{
 		params: params,
@@ -308,6 +307,9 @@ func TestBitcoinCashWallet_GenerateMultisigScript(t *testing.T) {
 		"53" + // OP_3
 		"ae" // OP_CHECKMULTISIG
 	rsBytes, err := hex.DecodeString(rs)
+	if err != nil {
+		t.Error(err)
+	}
 	if !bytes.Equal(rsBytes, redeemScript) {
 		t.Error("Returned invalid redeem script")
 	}

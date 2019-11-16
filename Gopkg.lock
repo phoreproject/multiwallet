@@ -15,12 +15,21 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:a2b5afc4a59e534f89daa418553fb55a199c4342a856819c6c343d660831bdef"
-  name = "github.com/OpenBazaar/multiwallet"
+  digest = "1:7ad4fd6237e9135e16926749a6ae72e66529b2d6eb4ac747876410f873742909"
+  name = "github.com/phoreproject/multiwallet"
   packages = [
+    "cache",
+    "client",
+    "client/blockbook",
     "client/errors",
+    "client/transport",
+    "config",
+    "datastore",
+    "keys",
     "litecoin/address",
     "litecoin/params",
+    "model",
+    "service",
     "util",
     "zcash/address",
   ]
@@ -40,11 +49,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:0efd5e1f5ad2283a539357586532519154e3b9894ad611a896069c8c46e86874"
+  digest = "1:cdb20ba34409b4eb78ff013e71eafce40e49b42485dafcfb675b64c5cb3cdaca"
   name = "github.com/OpenBazaar/wallet-interface"
   packages = ["."]
   pruneopts = "UT"
-  revision = "90321224966c0c88e02e99f1f9d3cef18a77f399"
+  revision = "aa8e214acd9b86f0c7a190d2eaf269070f5b5f3c"
 
 [[projects]]
   digest = "1:0f98f59e9a2f4070d66f0c9c39561f68fcd1dc837b22a852d28d0003aebd1b1e"
@@ -158,17 +167,6 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:f0b9d28f2379d36697c1356720e1134ee5040eb75d9f30cdb5ce0b39465fdf31"
-  name = "github.com/cpacia/BitcoinCash-Wallet"
-  packages = [
-    ".",
-    "exchangerates",
-  ]
-  pruneopts = "UT"
-  revision = "ba9295daa6d43b4cbd3f88e925379f0cf025b6b9"
-
-[[projects]]
-  branch = "master"
   digest = "1:36236e7063db3314f32b60885ef7ddf8abab65cb055f3a21d118f7e19148cfa3"
   name = "github.com/cpacia/bchutil"
   packages = ["."]
@@ -192,7 +190,7 @@
   version = "v1.2.1"
 
 [[projects]]
-  digest = "1:154538d29f26d251dfe9b38f2e7be0f404eecb0dc21c8fa973b21dd74d8bcdce"
+  digest = "1:700f82416846a964010b86fddeada0e1ceb1c96fa65acc4f234811a7d3e4fded"
   name = "github.com/gcash/bchd"
   packages = [
     "bchec",
@@ -202,8 +200,8 @@
     "wire",
   ]
   pruneopts = "UT"
-  revision = "385d819ea501b78c3c9b4c91d48950017e9bdba2"
-  version = "v0.15.0"
+  revision = "34d8b67e58c8487e08cc2b8130398ec4f4bc6df5"
+  version = "v0.14.6"
 
 [[projects]]
   branch = "master"
@@ -215,14 +213,14 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:b1c06051d563f82aa7ec6cb3f759d51301936cc0426933c7c567d8f2fd004c59"
+  digest = "1:2538b5efd7d3d7ac9efdfef955f5bcda82cbec4d6f8aef4d388f1c70e6318fc5"
   name = "github.com/gcash/bchutil"
   packages = [
     ".",
     "base58",
   ]
   pruneopts = "UT"
-  revision = "98e73ec336ba521482403cf7cda69281170e50e0"
+  revision = "800e62fe9aff291db8909a5dbf35c23cff8d1a62"
 
 [[projects]]
   branch = "master"
@@ -450,8 +448,17 @@
     "github.com/OpenBazaar/golang-socketio",
     "github.com/OpenBazaar/golang-socketio/protocol",
     "github.com/OpenBazaar/golang-socketio/transport",
-    "github.com/OpenBazaar/multiwallet/client/errors",
-    "github.com/OpenBazaar/multiwallet/util",
+    "github.com/phoreproject/multiwallet/cache",
+    "github.com/phoreproject/multiwallet/client",
+    "github.com/phoreproject/multiwallet/client/errors",
+    "github.com/phoreproject/multiwallet/config",
+    "github.com/phoreproject/multiwallet/datastore",
+    "github.com/phoreproject/multiwallet/keys",
+    "github.com/phoreproject/multiwallet/litecoin/address",
+    "github.com/phoreproject/multiwallet/model",
+    "github.com/phoreproject/multiwallet/service",
+    "github.com/phoreproject/multiwallet/util",
+    "github.com/phoreproject/multiwallet/zcash/address",
     "github.com/OpenBazaar/spvwallet",
     "github.com/OpenBazaar/spvwallet/exchangerates",
     "github.com/OpenBazaar/wallet-interface",
@@ -473,8 +480,6 @@
     "github.com/btcsuite/btcwallet/wallet/txauthor",
     "github.com/btcsuite/btcwallet/wallet/txrules",
     "github.com/btcsuite/golangcrypto/ripemd160",
-    "github.com/cpacia/BitcoinCash-Wallet",
-    "github.com/cpacia/BitcoinCash-Wallet/exchangerates",
     "github.com/cpacia/bchutil",
     "github.com/gcash/bchd/chaincfg/chainhash",
     "github.com/gcash/bchd/txscript",
