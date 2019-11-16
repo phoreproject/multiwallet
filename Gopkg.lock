@@ -15,29 +15,6 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:7ad4fd6237e9135e16926749a6ae72e66529b2d6eb4ac747876410f873742909"
-  name = "github.com/phoreproject/multiwallet"
-  packages = [
-    "cache",
-    "client",
-    "client/blockbook",
-    "client/errors",
-    "client/transport",
-    "config",
-    "datastore",
-    "keys",
-    "litecoin/address",
-    "litecoin/params",
-    "model",
-    "service",
-    "util",
-    "zcash/address",
-  ]
-  pruneopts = "UT"
-  revision = "6676c2bc74f94100422a114be64f9d13cd933fc0"
-
-[[projects]]
-  branch = "master"
   digest = "1:3861bd7ece0e78ea465eb4c2ee12391a2759755220c89729a7033b4af98b42e3"
   name = "github.com/OpenBazaar/spvwallet"
   packages = [
@@ -448,17 +425,6 @@
     "github.com/OpenBazaar/golang-socketio",
     "github.com/OpenBazaar/golang-socketio/protocol",
     "github.com/OpenBazaar/golang-socketio/transport",
-    "github.com/phoreproject/multiwallet/cache",
-    "github.com/phoreproject/multiwallet/client",
-    "github.com/phoreproject/multiwallet/client/errors",
-    "github.com/phoreproject/multiwallet/config",
-    "github.com/phoreproject/multiwallet/datastore",
-    "github.com/phoreproject/multiwallet/keys",
-    "github.com/phoreproject/multiwallet/litecoin/address",
-    "github.com/phoreproject/multiwallet/model",
-    "github.com/phoreproject/multiwallet/service",
-    "github.com/phoreproject/multiwallet/util",
-    "github.com/phoreproject/multiwallet/zcash/address",
     "github.com/OpenBazaar/spvwallet",
     "github.com/OpenBazaar/spvwallet/exchangerates",
     "github.com/OpenBazaar/wallet-interface",
