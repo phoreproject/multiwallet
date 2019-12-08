@@ -107,11 +107,11 @@ var PhoreTestNetParams = chaincfg.Params{
 	RelayNonStdTxs: false,
 	Bech32HRPSegwit: "tp",
 
-	PubKeyHashAddrID: 0x37, // starts with 1
-	ScriptHashAddrID: 0x0d, // starts with 3
-	PrivateKeyID:     0xd4, // starts with 5 (uncompressed) or K (compressed)
+	PubKeyHashAddrID: 0x8B, // starts with x or y
+	ScriptHashAddrID: 0x13, // starts with 8 or 9
+	PrivateKeyID:     0xEF, // starts with '9' or 'c' (Bitcoin defaults)
 
-	HDPrivateKeyID: [4]byte{0x3a, 0x80, 0x6, 0xa0},
+	HDPrivateKeyID: [4]byte{0x3a, 0x80, 0x61, 0xa0},
 	HDPublicKeyID:  [4]byte{0x3a, 0x80, 0x58, 0x37},
 
 	HDCoinType: 0x80000001,
