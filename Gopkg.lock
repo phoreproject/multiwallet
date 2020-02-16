@@ -42,19 +42,17 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:9ea121968c59b51fd90167594e8dab47e89635b1749ec790d816929fd1a87699"
+  digest = "1:4f1545a9a908c3f3d7c5d6c93baa76c3bb2f6369eb08a58f06d91487946625cc"
   name = "github.com/btcsuite/btcd"
   packages = [
     "addrmgr",
     "blockchain",
     "btcec",
-    "btcjson",
     "chaincfg",
     "chaincfg/chainhash",
     "connmgr",
     "database",
     "peer",
-    "rpcclient",
     "txscript",
     "wire",
   ]
@@ -125,14 +123,6 @@
   pruneopts = "UT"
   revision = "3fd0373267b6461dbefe91cef614278064d05465"
   version = "v1.0.0"
-
-[[projects]]
-  branch = "master"
-  digest = "1:0b2242fd2f4f51fb491e97e204464f75da680897a0db10ec7554c87b71b5afc3"
-  name = "github.com/btcsuite/websocket"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "31079b6807923eb23992c421b114992b95131b55"
 
 [[projects]]
   branch = "master"
@@ -430,16 +420,13 @@
     "github.com/OpenBazaar/wallet-interface",
     "github.com/btcsuite/btcd/blockchain",
     "github.com/btcsuite/btcd/btcec",
-    "github.com/btcsuite/btcd/btcjson",
     "github.com/btcsuite/btcd/chaincfg",
     "github.com/btcsuite/btcd/chaincfg/chainhash",
-    "github.com/btcsuite/btcd/rpcclient",
     "github.com/btcsuite/btcd/txscript",
     "github.com/btcsuite/btcd/wire",
     "github.com/btcsuite/btcutil",
     "github.com/btcsuite/btcutil/base58",
     "github.com/btcsuite/btcutil/bech32",
-    "github.com/btcsuite/btcutil/bloom",
     "github.com/btcsuite/btcutil/coinset",
     "github.com/btcsuite/btcutil/hdkeychain",
     "github.com/btcsuite/btcutil/txsort",
