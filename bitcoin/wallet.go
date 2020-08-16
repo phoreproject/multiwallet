@@ -28,7 +28,6 @@ import (
 	"github.com/phoreproject/multiwallet/model"
 	"github.com/phoreproject/multiwallet/service"
 	"github.com/phoreproject/multiwallet/util"
-	"github.com/op/go-logging"
 	"github.com/tyler-smith/go-bip39"
 	"golang.org/x/net/proxy"
 )
@@ -86,7 +85,7 @@ func NewBitcoinWallet(cfg config.CoinConfig, mnemonic string, params *chaincfg.P
 		return nil, err
 	}
 
-	fp := spvwallet.NewFeeProvider(cfg.MaxFee, cfg.HighFee, cfg.MediumFee, cfg.LowFee,  cfg.SuperLowFee,, cfg.FeeAPI, proxy)
+	fp := spvwallet.NewFeeProvider(cfg.MaxFee, cfg.HighFee, cfg.MediumFee, cfg.LowFee,  cfg.SuperLowFee, cfg.FeeAPI, proxy)
 
 	return &BitcoinWallet{
 		db:            cfg.DB,
