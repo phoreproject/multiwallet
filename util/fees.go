@@ -54,7 +54,7 @@ func NewFeeProvider(maxFee, priorityFee, normalFee, economicFee, superEconomicFe
 func (fp *FeeProvider) GetFeePerByte(feeLevel wallet.FeeLevel) uint64 {
 	defaultFee := func() uint64 {
 		switch feeLevel {
-		case wallet.PRIOIRTY:
+		case wallet.PRIORITY:
 			return fp.priorityFee
 		case wallet.NORMAL:
 			return fp.normalFee
@@ -77,7 +77,7 @@ func (fp *FeeProvider) GetFeePerByte(feeLevel wallet.FeeLevel) uint64 {
 
 	var target FeeTargetInUSDCents
 	switch feeLevel {
-	case wallet.PRIOIRTY:
+	case wallet.PRIORITY:
 		target = PriorityTarget
 	case wallet.NORMAL:
 		target = NormalTarget
