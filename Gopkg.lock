@@ -2,14 +2,6 @@
 
 
 [[projects]]
-  digest = "1:a8d82df00af2b645c7229c6d31e40076e02b0cb395f6aa9bdb138cb302eb8b78"
-  name = "github.com/OpenBazaar/go-ethwallet"
-  packages = ["util"]
-  pruneopts = "UT"
-  revision = "31db816d691ce615e012a18be2ad6fc3c7cce856"
-  version = "v0.1.0"
-
-[[projects]]
   branch = "master"
   digest = "1:12249c9e5740e17587799c25425a8058cb942da38e8226998cccc99a16dd9fe5"
   name = "github.com/OpenBazaar/golang-socketio"
@@ -20,18 +12,6 @@
   ]
   pruneopts = "UT"
   revision = "4147b5f0d29491b7cacd6bf58d825f54fe2b24af"
-
-[[projects]]
-  branch = "master"
-  digest = "1:e730e7727b72a772ae55fae5e357590e5caa45a1af462ed70ed64f94be82e829"
-  name = "github.com/OpenBazaar/multiwallet"
-  packages = [
-    "cache",
-    "config",
-    "datastore",
-  ]
-  pruneopts = "UT"
-  revision = "3a7d5fba48c3c22c58d9ab23e0d9621f9c0b016d"
 
 [[projects]]
   digest = "1:e21227e72cf4f8bae158b4e99e4a02b794a3b0a2f7944120e5741f1e06d44f9a"
@@ -571,12 +551,15 @@
   version = "v1.2.0"
 
 [[projects]]
-  digest = "1:6304a845be578a9ef219d350eb32c1031b7595443bcd0ffffc35795e7e554c31"
+  branch = "master"
+  digest = "1:ebb5488a22ceb1036ab5f5c2747de6f3de9d61e9e7c8287f081721636e67fdfb"
   name = "github.com/phoreproject/go-ethwallet"
-  packages = ["wallet"]
+  packages = [
+    "util",
+    "wallet",
+  ]
   pruneopts = "UT"
-  revision = "31db816d691ce615e012a18be2ad6fc3c7cce856"
-  version = "v0.1.0"
+  revision = "d370330a5102d2e757ba54c4fc29301adc130767"
 
 [[projects]]
   digest = "1:9e1d37b58d17113ec3cb5608ac0382313c5b59470b94ed97d0976e69c7022314"
@@ -722,7 +705,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:6803aca28e397475d50f1bd64d709f272da6c4c1ff0f923518bd8ef301157e0e"
+  digest = "1:7c09dae2f622decf68933485c97e1bca022ed85e3b918e7ab56805328f630441"
   name = "golang.org/x/sys"
   packages = [
     "cpu",
@@ -731,7 +714,7 @@
     "windows",
   ]
   pruneopts = "UT"
-  revision = "3d37ad5750ed7900cf6800ca4b000cb87d6e497a"
+  revision = "9781c653f44323e2079cb1123720c32f9626be2c"
 
 [[projects]]
   digest = "1:4e215023f245ee44676ce94f5031f41a7ba2089adf2d9c0175f36eeb6dd62f46"
